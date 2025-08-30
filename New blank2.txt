@@ -1,0 +1,28 @@
+def evaluate_feasibility(resources_available, time_available, skills_available, required_resources, required_time, required_skills):
+    # Check resource feasibility
+    resources_feasible = resources_available >= required_resources
+    
+    # Check time feasibility
+    time_feasible = time_available >= required_time
+    
+    # Check skills feasibility
+    skills_feasible = all(skill in skills_available for skill in required_skills)
+    
+    # Determine overall feasibility
+    if resources_feasible and time_feasible and skills_feasible:
+        return "Feasible"
+    else:
+        return "Not Feasible"
+
+# Example usage
+resources_available = 10  # Example: 10 units of resources
+time_available = 30       # Example: 30 days available
+skills_available = ['Python', 'Data Analysis', 'Project Management']  # Skills the team has
+
+required_resources = 8    # Resources required for the project
+required_time = 25        # Time required for the project
+required_skills = ['Python', 'Data Analysis']  # Skills required for the project
+
+feasibility_status = evaluate_feasibility(resources_available, time_available, skills_available, required_resources, required_time, required_skills)
+
+print(f"Project Feasibility Status: {feasibility_status}")
