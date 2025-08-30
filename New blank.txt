@@ -1,0 +1,29 @@
+import datetime
+import webbrowser
+import os
+
+def speak(text):
+    print("Assistant:", text)
+
+while True:
+    query = input("You: ").lower()
+
+    if "time" in query:
+        speak(datetime.datetime.now().strftime("%H:%M:%S"))
+
+    elif "open youtube" in query:
+        webbrowser.open("https://youtube.com")
+        speak("Opening YouTube")
+
+    elif "open google" in query:
+        webbrowser.open("https://google.com")
+        speak("Opening Google")
+
+    elif "play music" in query:
+        music_dir = "C:/Users/Public/Music"
+        songs = os.listdir(music_dir)
+        os.startfile(os.path.join(music_dir, songs[0]))
+
+    elif "stop" in query or "exit" in query:
+        speak("Goodbye")
+        break
